@@ -57,8 +57,8 @@ const access = () => {
             break;
         case ("user"):
             let flightWithCost = parseInt(prompt("Que precio esta buscando?"));
-            let flightCost = flight.filter(flight => flight.cost === flightWithCost);
-            alert("hay: \n" + flightCost.map(flight => `${flight.from} hasta ${flight.to}`).join(`\n`));
+            let flightCost = flight.find(flight.cost => flight.cost < flightWithCost);
+            alert("hay: \n + flightCost.map(flight => `${flight.from} hasta ${flight.to}`).join(`\n`));
             break;
         case ("exit"):
             alert("Gracias por haber utilizar aereolinea by ISDI CODERS")
