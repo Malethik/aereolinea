@@ -56,9 +56,9 @@ const access = () => {
             console.log(flight)
             break;
         case ("user"):
-            let flightWithCost = prompt("Que precio esta buscando?");
-            let flightCost = flight.filter(cost => cost.includes(cost));
-            alert("hay: \n" + flightWithCost.join('\n'));
+            let flightWithCost = parseInt(prompt("Que precio esta buscando?"));
+            let flightCost = flight.filter(flight => flight.cost === flightWithCost);
+            alert("hay: \n" + flightCost.map(flight => `${flight.from} hasta ${flight.to}`).join(`\n`));
             break;
         case ("exit"):
             alert("Gracias por haber utilizar aereolinea by ISDI CODERS")
@@ -68,4 +68,3 @@ const access = () => {
     }
 }
 access();
-
