@@ -36,31 +36,28 @@ console.log(`Hay ${vueloConEscalas.length} que hace escala.`);
 let ultimoCincoVuelo = vuelos.slice(-5);
 for (let y = 0; y < ultimoCincoVuelo.length; y++) {
     let ultimo = ultimoCincoVuelo[y]
-    let cambio = ultimo.layover === true ? "si" : "no"
-    console.log(`El ultimo vuelos dey hoy son desde ${ultimo.from} hasta ${ultimo.to} costa ${ultimo.cost} y ${cambio.layover}.`)
+    console.log(`El ultimo vuelos dey hoy son desde ${ultimo.from} hasta ${ultimo.to} costa ${ultimo.cost} y ${ultimo.layover}.`)
 }
 //user admin exit
 //da finire!
-const access = () => {
-    let level = "";
-    level = prompt(`${userName}, Choose an opcion: user, admin, exit`);
-    do {
-        switch (level) {
-            case ("user"):
-                userlLevel();
-                break;
-            case ("admin"):
-                adminLevel();
-                break;
-            case ("exit"):
-                exitLevel();
-                break;
-            default:
-                if (level !== "user", level !== "admin", level !== "exit") {
-                    level = prompt("Inserire una opcione valida (user,admin o exit)");
-                }
-        }
-    } while (level !== "user", level !== "admin", level !== "exit");
-    return level;
-}
 
+let level = prompt("Seleziona scelta utente entre admin, user or exit!")
+let access = () => {
+    switch (level) {
+        case ("admin"):
+            let addFlight = prompt("Añadir nuevo volo:");
+            addFlight.push(new flight);
+            alert("Nuevo vuelo añadito con sucesso!")
+            break;
+        case ("user"):
+            let flightWithCost = prompt("Que precio esta buscando?");
+            let flightCost = vuelos.filter(cost => cost.includes(cost));
+            alert("hay: \n" + flightWithCost.join('\n'));
+            break;
+        case ("exit"):
+            alert("Gracias por haber utilizar aereolinea by ISDI CODERS")
+            break;
+        default:
+            alert("No valido, selecionar entre user, admin o exit ")
+    }
+}
