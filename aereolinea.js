@@ -1,7 +1,7 @@
 let userName = prompt("Insert username");
-alert(`Welcome ${userName}!`)
+alert(`Welcome ${userName}, we are happy to see you here!`)
 
-const vuelos = [
+const flight = [
     { id: 1, to: "New York", from: "Barcelona", cost: 700, layover: false },
     { id: 2, to: "Los Angeles", from: "Madrid", cost: 1100, layover: true },
     { id: 3, to: "Paris", from: "Barcelona", cost: 210, layover: false },
@@ -13,48 +13,51 @@ const vuelos = [
     { id: 9, to: "Sydney", from: "Barcelona", cost: 150, layover: true },
     { id: 10, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
 ];
-console.log(vuelos);
+console.log(flight);
 
-let valorInicial = 0
+let startingValue = 0
 
-for (let i = 0; i < vuelos.length; i++) {
-    let layover = vuelos[i]
-    let escala = layover.layover === true ? "hace escala" : "no hace escala"
-    layover.layover = escala
-    console.log(`El vuelo desde ${vuelos[i].from} hasta ${vuelos[i].to}, costa ${vuelos[i].cost} € y ${(vuelos[i].layover)}.`)
-    valorInicial += vuelos[i].cost
+for (let i = 0; i < flight.length; i++) {
+    let layover = flight[i]
+    let withLayover = layover.layover === true ? "hace escala" : "no hace escala"
+    layover.layover = withLayover
+    console.log(`El vuelo desde ${flight[i].from} hasta ${flight[i].to}, costa ${flight[i].cost} € y ${(flight[i].layover)}.`)
+    startingValue += flight[i].cost
 }
 
-const mediumCost = valorInicial / vuelos.length;
-console.log(`El coste medio es de ${mediumCost} €`);
+const avarangeCost = startingValue / flight.length;
+console.log(`El coste medio es de ${avarangeCost} €`);
 
 
-let vueloConEscalas = vuelos.filter((vuelos) => vuelos.layover === "hace escala");
-console.log(`Hay ${vueloConEscalas.length} que hace escala.`);
+let flightWithLayover = flight.filter((flight) => flight.layover === "hace escala");
+console.log(`Hay ${flightWithLayover.length} que hace escala.`);
 
 
-let ultimoCincoVuelo = vuelos.slice(-5);
-for (let y = 0; y < ultimoCincoVuelo.length; y++) {
-    let ultimo = ultimoCincoVuelo[y]
+let lastFive = flight.slice(-5);
+for (let y = 0; y < lastFive.length; y++) {
+    let ultimo = lastFive[y]
     console.log(`El ultimo vuelos dey hoy son desde ${ultimo.from} hasta ${ultimo.to} costa ${ultimo.cost} y ${ultimo.layover}.`)
 }
+
 let level = prompt("Seleziona scelta utente entre admin, user or exit!");
+
 const access = () => {
     switch (level) {
         case ("admin"):
             let newFlight = {
-                id: vuelos.length +1,
+                id: flight.length + 1,
                 to: prompt("añadir la destinacion del nuevo vuelo"),
                 from: prompt("añadir la ciudad de partenza"),
-                cost: parseInt("inserir el costo del vuelo"),
+                cost: parseInt(prompt("inserir el costo del vuelo")),
                 layover: confirm("El vuelo hace escala?"),
             }
             vuelos.push(newFlight)
             alert("Nuevo vuelo añadito con sucesso!")
+            console.log(flight)
             break;
         case ("user"):
             let flightWithCost = prompt("Que precio esta buscando?");
-            let flightCost = vuelos.filter(cost => cost.includes(cost));
+            let flightCost = flight.filter(cost => cost.includes(cost));
             alert("hay: \n" + flightWithCost.join('\n'));
             break;
         case ("exit"):
@@ -64,3 +67,5 @@ const access = () => {
             alert("No valido, selecionar entre user, admin o exit ")
     }
 }
+access();
+
