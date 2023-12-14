@@ -38,15 +38,18 @@ for (let y = 0; y < ultimoCincoVuelo.length; y++) {
     let ultimo = ultimoCincoVuelo[y]
     console.log(`El ultimo vuelos dey hoy son desde ${ultimo.from} hasta ${ultimo.to} costa ${ultimo.cost} y ${ultimo.layover}.`)
 }
-//user admin exit
-//da finire!
-
-let level = prompt("Seleziona scelta utente entre admin, user or exit!")
-let access = () => {
+let level = prompt("Seleziona scelta utente entre admin, user or exit!");
+const access = () => {
     switch (level) {
         case ("admin"):
-            let addFlight = prompt("Añadir nuevo volo:");
-            addFlight.push(new flight);
+            let newFlight = {
+                id: vuelos.length +1,
+                to: prompt("añadir la destinacion del nuevo vuelo"),
+                from: prompt("añadir la ciudad de partenza"),
+                cost: parseInt("inserir el costo del vuelo"),
+                layover: confirm("El vuelo hace escala?"),
+            }
+            vuelos.push(newFlight)
             alert("Nuevo vuelo añadito con sucesso!")
             break;
         case ("user"):
