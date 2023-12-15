@@ -51,7 +51,7 @@ const access = () => {
                 cost: parseInt(prompt("inserir el costo del vuelo")),
                 layover: confirm("El vuelo hace escala?"),
             }
-            vuelos.push(newFlight)
+            flight.push(newFlight)
             alert("Nuevo vuelo añadito con sucesso!")
             console.log(flight)
             break;
